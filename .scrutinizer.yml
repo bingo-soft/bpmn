@@ -1,0 +1,12 @@
+before_commands:
+    - "composer install --no-interaction"
+build:
+  nodes:
+    php74:
+      environment:
+        php: 7.4
+        redis: false
+    php80:
+      environment:
+        php: 8.0
+        redis: false
