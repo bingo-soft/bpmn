@@ -18,7 +18,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceStartEvent(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -30,7 +30,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceUserTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -53,7 +53,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceSendTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -75,7 +75,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceServiceTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -97,7 +97,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceReceiveTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -119,7 +119,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceManualTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -141,7 +141,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceBusinessRuleTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -163,7 +163,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceScriptTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -185,7 +185,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceCatchingIntermediateEvent(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -207,7 +207,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceThrowingIntermediateEvent(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -229,7 +229,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceEndEvent(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -251,7 +251,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceCallActivity(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -273,7 +273,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceExclusiveGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -295,7 +295,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceInclusiveGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -317,7 +317,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceParallelGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -339,7 +339,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceEventBasedGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -362,7 +362,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceSubProcess(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -384,7 +384,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceBoundaryEventForTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -402,7 +402,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceFollowingFlowNodeProperlyForTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -428,7 +428,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceTwoBoundaryEventsForTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -451,7 +451,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceThreeBoundaryEventsForTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -479,7 +479,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceManyBoundaryEventsForTask(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -512,7 +512,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceBoundaryEventForSubProcess(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -530,7 +530,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceFollowingFlowNodeForSubProcess(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -556,7 +556,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceTwoBoundaryEventsForSubProcess(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -577,7 +577,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceThreeBoundaryEventsForSubProcess(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -603,7 +603,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceManyBoundaryEventsForSubProcess(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -634,7 +634,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceTwoBranchesForParallelGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -663,7 +663,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceThreeBranchesForParallelGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -696,7 +696,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceManyBranchesForParallelGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -734,7 +734,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceTwoBranchesForExclusiveGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -763,7 +763,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceThreeBranchesForExclusiveGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -796,7 +796,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceManyBranchesForExclusiveGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -834,7 +834,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceTwoBranchesForEventBasedGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -864,7 +864,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceThreeBranchesForEventBasedGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -898,7 +898,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceManyBranchesForEventBasedGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -937,7 +937,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceTwoBranchesForInclusiveGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -966,7 +966,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceThreeBranchesForInclusiveGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -999,7 +999,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceManyBranchesForInclusiveGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -1038,7 +1038,7 @@ class CoordinatesGenerationTest extends TestCase
     public function testShouldPlaceStartEventWithinSubProcess(): void
     {
 
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -1053,7 +1053,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldAdjustSubProcessWidth(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -1072,7 +1072,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldAdjustSubProcessWidthWithEmbeddedSubProcess(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -1096,7 +1096,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldAdjustSubProcessHeight(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -1116,7 +1116,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldAdjustSubProcessHeightWithEmbeddedProcess(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -1143,7 +1143,7 @@ class CoordinatesGenerationTest extends TestCase
 
     public function testShouldPlaceCompensation(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent()

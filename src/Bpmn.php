@@ -285,7 +285,7 @@ class Bpmn
 
     public static function readModelFromFile(string $filePath): BpmnModelInstanceInterface
     {
-        return self::$INSTANCE->doReadModelFromFile($filePath);
+        return self::getInstance()->doReadModelFromFile($filePath);
     }
 
     protected function doReadModelFromFile(string $filePath): BpmnModelInstanceInterface
@@ -313,12 +313,12 @@ class Bpmn
      */
     public static function readModelFromStream($stream): BpmnModelInstanceInterface
     {
-        return self::$INSTANCE->doReadModelFromInputStream($stream);
+        return self::getInstance()->doReadModelFromInputStream($stream);
     }
 
     public static function writeModelToFile(string $filePath, BpmnModelInstanceInterface $modelInstance): void
     {
-        self::$INSTANCE->doWriteModelToFile($filePath, $modelInstance);
+        self::getInstance()->doWriteModelToFile($filePath, $modelInstance);
     }
 
     protected function doWriteModelToFile(
@@ -342,7 +342,7 @@ class Bpmn
      */
     public static function writeModelToStream($stream, BpmnModelInstanceInterface $modelInstance): void
     {
-        self::$INSTANCE->doWriteModelToOutputStream($stream, $modelInstance);
+        self::getInstance()->doWriteModelToOutputStream($stream, $modelInstance);
     }
 
     /**
@@ -362,7 +362,7 @@ class Bpmn
 
     public static function convertToString(BpmnModelInstanceInterface $modelInstance): string
     {
-        return self::$INSTANCE->doConvertToString($modelInstance);
+        return self::getInstance()->doConvertToString($modelInstance);
     }
 
     protected function doConvertToString(BpmnModelInstanceInterface $modelInstance): string
@@ -378,12 +378,12 @@ class Bpmn
 
     public static function validateModel(BpmnModelInstanceInterface $modelInstance): void
     {
-        self::$INSTANCE->doValidateModel($modelInstance);
+        self::getInstance()->doValidateModel($modelInstance);
     }
 
     public static function createEmptyModel(): BpmnModelInstanceInterface
     {
-        return self::$INSTANCE->doCreateEmptyModel();
+        return self::getInstance()->doCreateEmptyModel();
     }
 
     protected function doCreateEmptyModel(): BpmnModelInstanceInterface
@@ -393,7 +393,7 @@ class Bpmn
 
     public static function createProcess(?string $processId = null): ProcessBuilder
     {
-        $modelInstance = self::$INSTANCE->doCreateEmptyModel();
+        $modelInstance = self::getInstance()->doCreateEmptyModel();
         $definitions = $modelInstance->newInstance(DefinitionsInterface::class);
         $definitions->setTargetNamespace(BpmnModelConstants::BPMN20_NS);
         $definitions->getDomElement()->registerNamespace("extension", BpmnModelConstants::EXTENSION_NS);

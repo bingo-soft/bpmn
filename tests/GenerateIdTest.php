@@ -17,7 +17,7 @@ class GenerateIdTest extends TestCase
     public function testShouldNotGenerateIdsOnRead(): void
     {
         $stream = fopen('tests/Resources/GenerateIdTest.bpmn', 'r+');
-        $modelInstance = Bpmn::getInstance()->readModelFromStream($stream);
+        $modelInstance = Bpmn::readModelFromStream($stream);
         $definitions = $modelInstance->getDefinitions();
         $this->assertNull($definitions->getId());
 
@@ -33,7 +33,7 @@ class GenerateIdTest extends TestCase
 
     public function testShouldGenerateIdsOnCreate(): void
     {
-        $modelInstance = Bpmn::getInstance()->createEmptyModel();
+        $modelInstance = Bpmn::createEmptyModel();
         $definitions = $modelInstance->newInstance(DefinitionsInterface::class);
         $this->assertFalse($definitions->getId() === null);
 

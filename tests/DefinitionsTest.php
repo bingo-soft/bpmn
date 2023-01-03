@@ -51,7 +51,7 @@ class DefinitionsTest extends BpmnModelTest
     public function testShouldAddChildElementsInCorrectOrder(): void
     {
         // create an empty model
-        $bpmnModelInstance = Bpmn::getInstance()->createEmptyModel();
+        $bpmnModelInstance = Bpmn::createEmptyModel();
 
         // add definitions
         $definitions = $bpmnModelInstance->newInstance(DefinitionsInterface::class);
@@ -83,7 +83,7 @@ class DefinitionsTest extends BpmnModelTest
         $definitions->addImport($importElement);
 
         // validate model
-        Bpmn::getInstance()->validateModel($bpmnModelInstance);
+        Bpmn::validateModel($bpmnModelInstance);
         $this->assertTrue(true);
     }
 
@@ -107,11 +107,11 @@ class DefinitionsTest extends BpmnModelTest
         $definitions->addImport($importElement);
 
         // validate model
-        Bpmn::getInstance()->validateModel($this->bpmnModelInstance);
+        Bpmn::validateModel($this->bpmnModelInstance);
 
         $path = tempnam(sys_get_temp_dir(), 'bpmn');
         $outputStream = fopen($path, 'a+');
-        Bpmn::getInstance()->writeModelToStream($outputStream, $this->bpmnModelInstance);
+        Bpmn::writeModelToStream($outputStream, $this->bpmnModelInstance);
 
         $outputStream = fopen($path, 'a+');
         $modelString = IoUtil::getStringFromInputStream($outputStream);
@@ -128,7 +128,7 @@ class DefinitionsTest extends BpmnModelTest
     public function testShouldAddMessageAndMessageEventDefinition(): void
     {
         // create empty model
-        $bpmnModelInstance = Bpmn::getInstance()->createEmptyModel();
+        $bpmnModelInstance = Bpmn::createEmptyModel();
 
         // add definitions to model
         $definitions = $bpmnModelInstance->newInstance(DefinitionsInterface::class);
@@ -183,14 +183,14 @@ class DefinitionsTest extends BpmnModelTest
         $startEvent->addEventDefinition($anotherMessageEventDefinition);
 
         // validate model
-        Bpmn::getInstance()->validateModel($bpmnModelInstance);
+        Bpmn::validateModel($bpmnModelInstance);
         $this->assertTrue(true);
     }
 
     public function testShouldAddParentChildElementInCorrectOrder(): void
     {
         // create empty model
-        $bpmnModelInstance = Bpmn::getInstance()->createEmptyModel();
+        $bpmnModelInstance = Bpmn::createEmptyModel();
 
         // add definitions to model
         $definitions = $bpmnModelInstance->newInstance(DefinitionsInterface::class);
@@ -226,7 +226,7 @@ class DefinitionsTest extends BpmnModelTest
         $process->setExtensionElements($extensionElements);
 
         // validate model
-        Bpmn::getInstance()->validateModel($bpmnModelInstance);
+        Bpmn::validateModel($bpmnModelInstance);
         $this->assertTrue(true);
     }
 }

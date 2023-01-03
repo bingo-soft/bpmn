@@ -21,7 +21,7 @@ class TextAnnotationTest extends BpmnModelElementInstanceTest
         $ref = new \ReflectionClass(static::class);
         $className = str_replace('Test', 'Interface', $ref->getShortName());
         $instanceClass = sprintf("%s\%s", str_replace('Tests', 'Bpmn', __NAMESPACE__), $className);
-        $this->modelInstance = Bpmn::getInstance()->readModelFromStream(
+        $this->modelInstance = Bpmn::readModelFromStream(
             fopen(realpath(".") . "/tests/Resources/TextAnnotationTest.bpmn", "r+")
         );
         $this->model = $this->modelInstance->getModel();

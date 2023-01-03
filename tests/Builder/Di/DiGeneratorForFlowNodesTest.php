@@ -17,14 +17,14 @@ class DiGeneratorForFlowNodesTest extends TestCase
     protected function tearDown(): void
     {
         if ($this->instance !== null) {
-            Bpmn::getInstance()->validateModel($this->instance);
+            Bpmn::validateModel($this->instance);
         }
     }
 
     public function testShouldGeneratePlaneForProcess(): void
     {
         // when
-        $this->instance = Bpmn::getInstance()->createExecutableProcess("process")->done();
+        $this->instance = Bpmn::createExecutableProcess("process")->done();
 
         // then
         $bpmnDiagrams = $this->instance->getModelElementsByType(BpmnDiagramInterface::class);
@@ -40,7 +40,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForStartEvent(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
         // when
         $this->instance = $processBuilder
                       ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -57,7 +57,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForUserTask(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -75,7 +75,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForSendTask(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -93,7 +93,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForServiceTask(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -111,7 +111,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForReceiveTask(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -129,7 +129,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForManualTask(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -147,7 +147,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForBusinessRuleTask(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -165,7 +165,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForScriptTask(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -183,7 +183,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForCatchingIntermediateEvent(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -202,7 +202,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForBoundaryIntermediateEvent(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -227,7 +227,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForThrowingIntermediateEvent(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -245,7 +245,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForEndEvent(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -263,7 +263,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForBlankSubProcess(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -285,7 +285,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapesForNestedFlowNodes(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -315,7 +315,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForEventSubProcess(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -344,7 +344,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForCallActivity(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -363,7 +363,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForTransaction(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -393,7 +393,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForParallelGateway(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -412,7 +412,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForInclusiveGateway(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -431,7 +431,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForEventBasedGateway(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder
@@ -451,7 +451,7 @@ class DiGeneratorForFlowNodesTest extends TestCase
     public function testShouldGenerateShapeForExclusiveGateway(): void
     {
         // given
-        $processBuilder = Bpmn::getInstance()->createExecutableProcess();
+        $processBuilder = Bpmn::createExecutableProcess();
 
         // when
         $this->instance = $processBuilder

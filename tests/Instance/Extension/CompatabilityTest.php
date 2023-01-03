@@ -12,7 +12,7 @@ class CompatabilityTest extends TestCase
 {
     public function testModifyingElementWithActivitiNsKeepsIt(): void
     {
-        $modelInstance = Bpmn::getInstance()->readModelFromStream(
+        $modelInstance = Bpmn::readModelFromStream(
             fopen(realpath(".") . "/tests/Resources/ExtensionsCompatabilityTest.xml", "r+")
         );
         $process = $modelInstance->getModelElementById(BpmnTestConstants::PROCESS_ID);
@@ -32,7 +32,7 @@ class CompatabilityTest extends TestCase
 
     public function testModifyingAttributeWithActivitiNsKeepsIt(): void
     {
-        $modelInstance = Bpmn::getInstance()->readModelFromStream(
+        $modelInstance = Bpmn::readModelFromStream(
             fopen(realpath(".") . "/tests/Resources/ExtensionsCompatabilityTest.xml", "r+")
         );
         $process = $modelInstance->getModelElementById(BpmnTestConstants::PROCESS_ID);

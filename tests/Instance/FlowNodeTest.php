@@ -45,7 +45,7 @@ class FlowNodeTest extends BpmnModelElementInstanceTest
 
     public function testUpdateIncomingOutgoingChildElements(): void
     {
-        $modelInstance = Bpmn::getInstance()->createProcess()
+        $modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->userTask("test")
         ->endEvent()

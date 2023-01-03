@@ -20,7 +20,7 @@ class ModelTest extends TestCase
 {
     public function testCreateEmptyModel(): void
     {
-        $bpmnModelInstance = Bpmn::getInstance()->createEmptyModel();
+        $bpmnModelInstance = Bpmn::createEmptyModel();
 
         $definitions = $bpmnModelInstance->getDefinitions();
         $this->assertNull($definitions);
@@ -34,7 +34,7 @@ class ModelTest extends TestCase
 
     public function testBaseTypeCalculation(): void
     {
-        $bpmnModelInstance = Bpmn::getInstance()->createEmptyModel();
+        $bpmnModelInstance = Bpmn::createEmptyModel();
         $model = $bpmnModelInstance->getModel();
         $allBaseTypes = ModelUtil::calculateAllBaseTypes($model->getType(StartEventInterface::class));
         $this->assertCount(5, $allBaseTypes);
@@ -48,7 +48,7 @@ class ModelTest extends TestCase
 
     public function testExtendingTypeCalculation(): void
     {
-        $bpmnModelInstance = Bpmn::getInstance()->createEmptyModel();
+        $bpmnModelInstance = Bpmn::createEmptyModel();
         $model = $bpmnModelInstance->getModel();
         $baseInstanceTypes = [];
         $baseInstanceTypes[] = $model->getType(EventInterface::class);

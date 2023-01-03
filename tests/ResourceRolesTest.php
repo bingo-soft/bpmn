@@ -17,7 +17,7 @@ class ResourceRolesTest extends TestCase
     protected function setUp(): void
     {
         $stream = fopen('tests/Resources/ResourceRolesTest.bpmn', 'r+');
-        $this->modelInstance = Bpmn::getInstance()->readModelFromStream($stream);
+        $this->modelInstance = Bpmn::readModelFromStream($stream);
     }
 
     public function testGetPerformer(): void

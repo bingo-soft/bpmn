@@ -19,7 +19,7 @@ abstract class BpmnModelTest extends TestCase
     {
         $stream = fopen('tests/Resources/' . $test . '.bpmn', 'r+');
         try {
-            $this->bpmnModelInstance = Bpmn::getInstance()->readModelFromStream($stream);
+            $this->bpmnModelInstance = Bpmn::readModelFromStream($stream);
         } finally {
             fclose($stream);
         }

@@ -36,7 +36,7 @@ class BpmnDiTest extends TestCase
     protected function setUp(): void
     {
         $stream = fopen('tests/Resources/BpmnDiTest.xml', 'r+');
-        $this->modelInstance = Bpmn::getInstance()->readModelFromStream($stream);
+        $this->modelInstance = Bpmn::readModelFromStream($stream);
         $this->collaboration = $this->modelInstance->getModelElementById(BpmnTestConstants::COLLABORATION_ID);
         $this->participant = $this->modelInstance->getModelElementById(BpmnTestConstants::PARTICIPANT_ID . '1');
         $this->process = $this->modelInstance->getModelElementById(BpmnTestConstants::PROCESS_ID . '1');
@@ -237,7 +237,7 @@ class BpmnDiTest extends TestCase
         $endWaypoint->setY(330.0);
         $flowEdge->addWaypoint($endWaypoint);
 
-        Bpmn::getInstance()->validateModel($modelInstance);
+        Bpmn::validateModel($modelInstance);
         $this->assertTrue(true);
     }
 }

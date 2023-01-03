@@ -20,13 +20,13 @@ class CollaborationParserTest extends TestCase
     protected function setUp(): void
     {
         $stream = fopen('tests/Resources/CollaborationParserTest.bpmn', 'r+');
-        $this->modelInstance = Bpmn::getInstance()->readModelFromStream($stream);
+        $this->modelInstance = Bpmn::readModelFromStream($stream);
         $this->collaboration = $this->modelInstance->getModelElementById("collaboration1");
     }
 
     protected function tearDown(): void
     {
-        Bpmn::getInstance()->validateModel($this->modelInstance);
+        Bpmn::validateModel($this->modelInstance);
     }
 
     public function testConversations(): void

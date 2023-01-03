@@ -16,7 +16,7 @@ abstract class AbstractEventDefinitionTest extends BpmnModelElementInstanceTest
     {
         parent::setUp();
         $inputStream = ReflectUtil::getResourceAsFile("tests/Resources/EventDefinitionsTest.xml");
-        $event = Bpmn::getInstance()->readModelFromStream($inputStream)->getModelElementById("event");
+        $event = Bpmn::readModelFromStream($inputStream)->getModelElementById("event");
         $this->eventDefinitionQuery = new QueryImpl($event->getEventDefinitions());
     }
 

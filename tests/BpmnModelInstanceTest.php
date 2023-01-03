@@ -14,7 +14,7 @@ class BpmnModelInstanceTest extends TestCase
 {
     public function testClone(): void
     {
-        $modelInstance = Bpmn::getInstance()->createEmptyModel();
+        $modelInstance = Bpmn::createEmptyModel();
 
         $definitions = $modelInstance->newInstance(DefinitionsInterface::class);
         $definitions->setId("TestId");

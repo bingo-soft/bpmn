@@ -38,7 +38,7 @@ class TransactionTest extends BpmnModelElementInstanceTest
         $ref = new \ReflectionClass(static::class);
         $className = str_replace('Test', 'Interface', $ref->getShortName());
         $instanceClass = sprintf("%s\%s", str_replace('Tests', 'Bpmn', __NAMESPACE__), $className);
-        $modelInstance = Bpmn::getInstance()->readModelFromStream(
+        $modelInstance = Bpmn::readModelFromStream(
             fopen(realpath(".") . "/tests/Resources/TransactionTest.xml", "r+")
         );
         $transaction = $modelInstance->getModelElementById("transaction");
@@ -51,7 +51,7 @@ class TransactionTest extends BpmnModelElementInstanceTest
     public function testShouldWriteTransaction(): void
     {
         // given a model
-        $newModel = Bpmn::getInstance()->createProcess("process")->done();
+        $newModel = Bpmn::createProcess("process")->done();
 
         $process = $newModel->getModelElementById("process");
 

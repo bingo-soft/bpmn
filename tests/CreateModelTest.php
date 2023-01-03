@@ -25,7 +25,7 @@ class CreateModelTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createEmptyModel();
+        $this->modelInstance = Bpmn::createEmptyModel();
         $this->definitions = $this->modelInstance->newInstance(DefinitionsInterface::class);
         $this->definitions->setTargetNamespace("http://test.org/examples");
         $this->modelInstance->setDefinitions($this->definitions);
@@ -33,7 +33,7 @@ class CreateModelTest extends TestCase
 
     protected function tearDown(): void
     {
-        Bpmn::getInstance()->validateModel($this->modelInstance);
+        Bpmn::validateModel($this->modelInstance);
     }
 
     protected function createElement(

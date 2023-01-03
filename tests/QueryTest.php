@@ -18,7 +18,7 @@ class QueryTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()->id("start")
         ->userTask()->id("user")
         ->parallelGateway()->id("gateway1")
@@ -43,7 +43,7 @@ class QueryTest extends TestCase
 
     protected function tearDown(): void
     {
-        Bpmn::getInstance()->validateModel($this->modelInstance);
+        Bpmn::validateModel($this->modelInstance);
     }
 
     public function testList(): void

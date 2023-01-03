@@ -16,13 +16,13 @@ class DiGeneratorForSequenceFlowsTest extends TestCase
     protected function tearDown(): void
     {
         if ($this->instance !== null) {
-            Bpmn::getInstance()->validateModel($this->instance);
+            Bpmn::validateModel($this->instance);
         }
     }
 
     public function testShouldGenerateEdgeForSequenceFlow(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
                       ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -38,7 +38,7 @@ class DiGeneratorForSequenceFlowsTest extends TestCase
 
     public function testShouldGenerateEdgesForSequenceFlowsUsingGateway(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -61,7 +61,7 @@ class DiGeneratorForSequenceFlowsTest extends TestCase
 
     public function testShouldGenerateEdgesWhenUsingMoveToActivity(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -87,7 +87,7 @@ class DiGeneratorForSequenceFlowsTest extends TestCase
 
     public function testShouldGenerateEdgesWhenUsingMoveToNode(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)
@@ -113,7 +113,7 @@ class DiGeneratorForSequenceFlowsTest extends TestCase
 
     public function testShouldGenerateEdgesWhenUsingConnectTo(): void
     {
-        $builder = Bpmn::getInstance()->createExecutableProcess();
+        $builder = Bpmn::createExecutableProcess();
 
         $this->instance = $builder
             ->startEvent(BpmnTestConstants::START_EVENT_ID)

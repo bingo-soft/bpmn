@@ -25,7 +25,7 @@ composer require bingo-soft/bpmn
 ```php
 //create new invoice business process
 
-Bpmn::getInstance()->createProcess()
+Bpmn::createProcess()
         ->executable()
         ->startEvent()
           ->name("Invoice received")
@@ -75,4 +75,4 @@ Bpmn::getInstance()->createProcess()
 // Read business process from file
 
 $fd = fopen('test.bpmn', 'r+');
-$modelInstance = Bpmn::getInstance()->readModelFromStream($fd);
+$modelInstance = Bpmn::readModelFromStream($fd);

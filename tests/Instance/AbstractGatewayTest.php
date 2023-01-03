@@ -25,7 +25,7 @@ abstract class AbstractGatewayTest extends BpmnModelElementInstanceTest
     {
         parent::setUp();
         $inputStream = ReflectUtil::getResourceAsFile("tests/Resources/GatewaysTest.xml");
-        $elementInstances = Bpmn::getInstance()->readModelFromStream($inputStream)->getModelElementsByType(
+        $elementInstances = Bpmn::readModelFromStream($inputStream)->getModelElementsByType(
             $this->modelElementType
         );
         $this->assertCount(1, $elementInstances);

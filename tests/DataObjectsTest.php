@@ -24,12 +24,12 @@ class DataObjectsTest extends TestCase
     protected function setUp(): void
     {
         $stream = fopen('tests/Resources/DataObjectTest.bpmn', 'r+');
-        $this->modelInstance = Bpmn::getInstance()->readModelFromStream($stream);
+        $this->modelInstance = Bpmn::readModelFromStream($stream);
     }
 
     protected function tearDown(): void
     {
-        Bpmn::getInstance()->validateModel($this->modelInstance);
+        Bpmn::validateModel($this->modelInstance);
     }
 
     public function testGetDataObject(): void

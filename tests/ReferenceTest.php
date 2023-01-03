@@ -22,7 +22,7 @@ class ReferenceTest extends BpmnModelTest
     {
         parent::parseModel("ReferenceTest.shouldFindReferenceWithNamespace");
 
-        $this->testBpmnModelInstance = Bpmn::getInstance()->createEmptyModel();
+        $this->testBpmnModelInstance = Bpmn::createEmptyModel();
         $definitions = $this->testBpmnModelInstance->newInstance(DefinitionsInterface::class);
         $this->testBpmnModelInstance->setDefinitions($definitions);
 

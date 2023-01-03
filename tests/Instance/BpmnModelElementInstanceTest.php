@@ -27,7 +27,7 @@ abstract class BpmnModelElementInstanceTest extends AbstractModelElementInstance
             $className = str_replace('Test', '', $shortName);
         }
         $instanceClass = sprintf("%s\%s", str_replace('Tests', 'Bpmn', $this->namespace), $className);
-        $this->modelInstance = Bpmn::getInstance()->createEmptyModel();
+        $this->modelInstance = Bpmn::createEmptyModel();
         $this->model = $this->modelInstance->getModel();
         $this->modelElementType = $this->model->getType($instanceClass);
     }

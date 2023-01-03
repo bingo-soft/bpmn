@@ -57,7 +57,7 @@ class ProcessBuilderTest extends TestCase
 
     protected function setUp(): void
     {
-        $model = Bpmn::getInstance()->createEmptyModel()->getModel();
+        $model = Bpmn::createEmptyModel()->getModel();
         $this->taskType = $model->getType(TaskInterface::class);
         $this->gatewayType = $model->getType(GatewayInterface::class);
         $this->eventType = $model->getType(EventInterface::class);
@@ -66,7 +66,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateEmptyProcess(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()->done();
+        $this->modelInstance = Bpmn::createProcess()->done();
 
         $definitions = $this->modelInstance->getDefinitions();
         $this->assertFalse($definitions === null);
@@ -82,13 +82,13 @@ class ProcessBuilderTest extends TestCase
     public function testGetElement(): void
     {
         // Make sure this method is publicly available
-        $process = Bpmn::getInstance()->createProcess()->getElement();
+        $process = Bpmn::createProcess()->getElement();
         $this->assertFalse($process === null);
     }
 
     public function testCreateProcessWithStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->done();
 
@@ -97,7 +97,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithEndEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->endEvent()
         ->done();
@@ -107,7 +107,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithServiceTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->serviceTask()
         ->endEvent()
@@ -119,7 +119,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithSendTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->sendTask()
         ->endEvent()
@@ -131,7 +131,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithUserTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->userTask()
         ->endEvent()
@@ -143,7 +143,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithBusinessRuleTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->businessRuleTask()
         ->endEvent()
@@ -155,7 +155,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithScriptTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->scriptTask()
         ->endEvent()
@@ -167,7 +167,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithReceiveTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->receiveTask()
         ->endEvent()
@@ -179,7 +179,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithManualTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->manualTask()
         ->endEvent()
@@ -191,7 +191,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithParallelGateway(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
           ->parallelGateway()
           ->scriptTask()
@@ -208,7 +208,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithExclusiveGateway(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask()
           ->exclusiveGateway()
@@ -228,7 +228,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithInclusiveGateway(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask()
           ->inclusiveGateway()
@@ -250,7 +250,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithForkAndJoin(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask()
           ->parallelGateway()
@@ -271,7 +271,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateProcessWithMultipleParallelTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->parallelGateway("fork")
             ->userTask()
@@ -295,7 +295,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testBaseElementDocumentation(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess("process")
+        $this->modelInstance = Bpmn::createProcess("process")
                 ->documentation("processDocumentation")
                 ->startEvent("startEvent")
                 ->documentation("startEventDocumentation_1")
@@ -340,7 +340,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testExtend(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask()
             ->id("task1")
@@ -366,7 +366,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCreateInvoiceProcess(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->executable()
         ->startEvent()
           ->name("Invoice received")
@@ -413,7 +413,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testProcessExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess(BpmnTestConstants::PROCESS_ID)
+        $this->modelInstance = Bpmn::createProcess(BpmnTestConstants::PROCESS_ID)
           ->jobPriority('${somePriority}')
           ->taskPriority(BpmnTestConstants::TEST_PROCESS_TASK_PRIORITY)
           ->historyTimeToLive(BpmnTestConstants::TEST_HISTORY_TIME_TO_LIVE)
@@ -433,7 +433,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testProcessStartableInTasklist(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess(BpmnTestConstants::PROCESS_ID)
+        $this->modelInstance = Bpmn::createProcess(BpmnTestConstants::PROCESS_ID)
         ->startEvent()
         ->endEvent()
         ->done();
@@ -444,7 +444,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskExternalTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->serviceTask(BpmnTestConstants::EXTERNAL_TASK_ID)
         ->externalTask(BpmnTestConstants::TEST_EXTERNAL_TASK_TOPIC)
@@ -458,7 +458,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskExternalTaskErrorEventDefinition(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->serviceTask(BpmnTestConstants::EXTERNAL_TASK_ID)
         ->externalTask(BpmnTestConstants::TEST_EXTERNAL_TASK_TOPIC)
@@ -517,7 +517,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->serviceTask(BpmnTestConstants::TASK_ID)
           ->asyncBefore()
@@ -550,7 +550,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testServiceTaskExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->serviceTask(BpmnTestConstants::TASK_ID)
           ->setClass(BpmnTestConstants::TEST_CLASS_API)
@@ -577,7 +577,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testServiceTaskClass(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->serviceTask(BpmnTestConstants::TASK_ID)
           ->setClass(__CLASS__)
@@ -589,7 +589,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSendTaskExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->sendTask(BpmnTestConstants::TASK_ID)
           ->setClass(BpmnTestConstants::TEST_CLASS_API)
@@ -617,7 +617,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSendTaskClass(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->sendTask(BpmnTestConstants::TASK_ID)
           ->setClass(__CLASS__)
@@ -630,7 +630,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testUserTaskExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->userTask(BpmnTestConstants::TASK_ID)
           ->assignee(BpmnTestConstants::TEST_STRING_API)
@@ -662,7 +662,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testBusinessRuleTaskExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->businessRuleTask(BpmnTestConstants::TASK_ID)
             ->setClass(BpmnTestConstants::TEST_CLASS_API)
@@ -705,7 +705,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testBusinessRuleTaskClass(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->businessRuleTask(BpmnTestConstants::TASK_ID)
           ->setClass(Bpmn::class)
@@ -718,7 +718,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testScriptTaskExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->scriptTask(BpmnTestConstants::TASK_ID)
             ->resultVariable(BpmnTestConstants::TEST_STRING_API)
@@ -736,7 +736,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testStartEventExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent(BpmnTestConstants::START_EVENT_ID)
           ->asyncBefore()
           ->exclusive()
@@ -758,7 +758,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorDefinitionsForStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent("start")
           ->errorEventDefinition("event")
             ->errorCodeVariable("errorCodeVariable")
@@ -792,7 +792,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorDefinitionsForStartEventWithoutEventDefinitionId(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent("start")
           ->errorEventDefinition()
             ->errorCodeVariable("errorCodeVariable")
@@ -807,7 +807,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCallActivityExtension(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->callActivity(BpmnTestConstants::CALL_ACTIVITY_ID)
             ->calledElement(BpmnTestConstants::TEST_STRING_API)
@@ -860,7 +860,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCallActivityVariableMappingClass(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->callActivity(BpmnTestConstants::CALL_ACTIVITY_ID)
           ->variableMappingClass(__CLASS__)
@@ -873,7 +873,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSubProcessBuilder(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->subProcess(BpmnTestConstants::SUB_PROCESS_ID)
           ->asyncBefore()
@@ -898,7 +898,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSubProcessBuilderDetached(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->subProcess(BpmnTestConstants::SUB_PROCESS_ID)
           ->serviceTask(BpmnTestConstants::SERVICE_TASK_ID)
@@ -925,7 +925,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSubProcessBuilderNested(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->subProcess(BpmnTestConstants::SUB_PROCESS_ID . '1')
           ->asyncBefore()
@@ -970,7 +970,7 @@ class ProcessBuilderTest extends TestCase
     public function testSubProcessBuilderWrongScope(): void
     {
         $this->expectException(BpmnModelException::class);
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->subProcessDone()
           ->endEvent()
@@ -979,7 +979,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTransactionBuilder(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->transaction(BpmnTestConstants::TRANSACTION_ID)
           ->asyncBefore()
@@ -1006,7 +1006,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTransactionBuilderDetached(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->transaction(BpmnTestConstants::TRANSACTION_ID)
           ->serviceTask(BpmnTestConstants::SERVICE_TASK_ID)
@@ -1033,7 +1033,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testScriptText(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->scriptTask("script")
             ->scriptFormat("groovy")
@@ -1049,7 +1049,7 @@ class ProcessBuilderTest extends TestCase
     public function testEventBasedGatewayAsyncAfter(): void
     {
         try {
-            Bpmn::getInstance()->createProcess()
+            Bpmn::createProcess()
               ->startEvent()
               ->eventBasedGateway()
                 ->asyncAfter()
@@ -1059,7 +1059,7 @@ class ProcessBuilderTest extends TestCase
         }
 
         try {
-            Bpmn::getInstance()->createProcess()
+            Bpmn::createProcess()
               ->startEvent()
               ->eventBasedGateway()
                 ->asyncAfter(true)
@@ -1072,7 +1072,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMessageStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent("start")->message("message")
           ->done();
 
@@ -1094,7 +1094,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMessageStartEventWithExistingMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent("start")->message("message")
             ->subProcess()->triggerByEvent()
             ->embeddedSubProcess()
@@ -1120,7 +1120,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateMessageCatchEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent("catch")->message("message")
           ->done();
@@ -1130,7 +1130,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateMessageCatchEventWithExistingMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent("catch1")->message("message")
           ->intermediateCatchEvent("catch2")->message("message")
@@ -1146,7 +1146,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMessageEndEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent("end")->message("message")
           ->done();
@@ -1156,7 +1156,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMessageEventDefintionEndEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent("end")
           ->messageEventDefinition()
@@ -1168,7 +1168,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMessageEndEventWithExistingMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->parallelGateway()
           ->endEvent("end1")->message("message")
@@ -1186,7 +1186,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMessageEventDefinitionEndEventWithExistingMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->parallelGateway()
         ->endEvent("end1")
@@ -1209,7 +1209,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateMessageThrowEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw")->message("message")
           ->done();
@@ -1219,7 +1219,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateMessageEventDefintionThrowEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw")
           ->messageEventDefinition()
@@ -1231,7 +1231,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateMessageThrowEventWithExistingMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw1")->message("message")
           ->intermediateThrowEvent("throw2")->message("message")
@@ -1247,7 +1247,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateMessageEventDefintionThrowEventWithExistingMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw1")
           ->messageEventDefinition()
@@ -1269,7 +1269,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateMessageThrowEventWithMessageDefinition(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw1")
           ->messageEventDefinition()
@@ -1289,7 +1289,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateMessageThrowEventWithTaskPriority(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw1")
           ->messageEventDefinition("messageEventDefinition")
@@ -1302,7 +1302,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testEndEventWithTaskPriority(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent("end")
           ->messageEventDefinition("messageEventDefinition")
@@ -1315,7 +1315,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMessageEventDefinitionWithID(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw1")
           ->messageEventDefinition("messageEventDefinition")
@@ -1324,7 +1324,7 @@ class ProcessBuilderTest extends TestCase
         $event = $this->modelInstance->getModelElementById("messageEventDefinition");
         $this->assertFalse($event === null);
 
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw2")
           ->messageEventDefinition()->id("messageEventDefinition1")
@@ -1332,7 +1332,7 @@ class ProcessBuilderTest extends TestCase
 
         $event = $this->modelInstance->getModelElementById("messageEventDefinition1");
         $this->assertFalse($event === null);
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent("end1")
           ->messageEventDefinition("messageEventDefinition")
@@ -1341,7 +1341,7 @@ class ProcessBuilderTest extends TestCase
         $event = $this->modelInstance->getModelElementById("messageEventDefinition");
         $this->assertFalse($event === null);
 
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent("end2")
           ->messageEventDefinition()->id("messageEventDefinition1")
@@ -1353,7 +1353,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testReceiveTaskMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->receiveTask("receive")->message("message")
           ->done();
@@ -1367,7 +1367,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testReceiveTaskWithExistingMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->receiveTask("receive1")->message("message")
           ->receiveTask("receive2")->message("message")
@@ -1386,7 +1386,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSendTaskMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->sendTask("send")->message("message")
           ->done();
@@ -1400,7 +1400,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSendTaskWithExistingMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->sendTask("send1")->message("message")
           ->sendTask("send2")->message("message")
@@ -1419,7 +1419,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSignalStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent("start")->signal("signal")
           ->done();
 
@@ -1441,7 +1441,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSignalStartEventWithExistingSignal(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent("start")->signal("signal")
           ->subProcess()->triggerByEvent()
           ->embeddedSubProcess()
@@ -1467,7 +1467,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateSignalCatchEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent("catch")->signal("signal")
           ->done();
@@ -1477,7 +1477,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateSignalCatchEventWithExistingSignal(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent("catch1")->signal("signal")
           ->intermediateCatchEvent("catch2")->signal("signal")
@@ -1493,7 +1493,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSignalEndEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent("end")->signal("signal")
           ->done();
@@ -1503,7 +1503,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSignalEndEventWithExistingSignal(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->parallelGateway()
           ->endEvent("end1")->signal("signal")
@@ -1521,7 +1521,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateSignalThrowEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw")->signal("signal")
           ->done();
@@ -1531,7 +1531,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateSignalThrowEventWithExistingSignal(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw1")->signal("signal")
           ->intermediateThrowEvent("throw2")->signal("signal")
@@ -1547,7 +1547,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateSignalThrowEventWithPayloadLocalVar(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw")
             ->signalEventDefinition("signal")
@@ -1597,7 +1597,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateSignalThrowEventWithPayload(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw")
             ->signalEventDefinition("signal")
@@ -1620,7 +1620,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMessageBoundaryEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -1650,7 +1650,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMultipleBoundaryEvents(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -1692,7 +1692,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskListenerByClassName(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerClass("start", "aClass")
@@ -1711,7 +1711,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskListenerByClass(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
           ->userTask("task")
             ->taskListenerClass("start", __CLASS__)
@@ -1730,7 +1730,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskListenerByExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerExpression("start", "anExpression")
@@ -1749,7 +1749,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskListenerByDelegateExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerDelegateExpression("start", "aDelegate")
@@ -1768,7 +1768,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutCycleTaskListenerByClassName(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerClassTimeoutWithCycle("timeout-1", "aClass", "R/PT1H")
@@ -1796,7 +1796,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutDateTaskListenerByClassName(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerClassTimeoutWithDate("timeout-1", "aClass", "2019-09-09T12:12:12")
@@ -1824,7 +1824,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutDurationTaskListenerByClassName(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerClassTimeoutWithDuration("timeout-1", "aClass", "PT1H")
@@ -1854,7 +1854,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutDurationTaskListenerByClass(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerClassTimeoutWithDuration("timeout-1", __CLASS__, "PT1H")
@@ -1882,7 +1882,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutCycleTaskListenerByClass(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerClassTimeoutWithCycle("timeout-1", __CLASS__, "R/PT1H")
@@ -1910,7 +1910,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutDateTaskListenerByClass(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
             ->userTask("task")
               ->taskListenerClassTimeoutWithDate("timeout-1", __CLASS__, "2019-09-09T12:12:12")
@@ -1938,7 +1938,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutCycleTaskListenerByExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerExpressionTimeoutWithCycle("timeout-1", "anExpression", "R/PT1H")
@@ -1969,7 +1969,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutDateTaskListenerByExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerExpressionTimeoutWithDate("timeout-1", "anExpression", "2019-09-09T12:12:12")
@@ -2000,7 +2000,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutDurationTaskListenerByExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerExpressionTimeoutWithDuration("timeout-1", "anExpression", "PT1H")
@@ -2031,7 +2031,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutCycleTaskListenerByDelegateExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerDelegateExpressionTimeoutWithCycle("timeout-1", "aDelegate", "R/PT1H")
@@ -2059,7 +2059,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutDateTaskListenerByDelegateExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerDelegateExpressionTimeoutWithDate("timeout-1", "aDelegate", "2019-09-09T12:12:12")
@@ -2087,7 +2087,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimeoutDurationTaskListenerByDelegateExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
               ->userTask("task")
                 ->taskListenerDelegateExpressionTimeoutWithDuration("timeout-1", "aDelegate", "PT1H")
@@ -2115,7 +2115,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testExecutionListenerByClassName(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->executionListenerClass("start", "aClass")
@@ -2134,7 +2134,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testExecutionListenerByExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->executionListenerExpression("start", "anExpression")
@@ -2153,7 +2153,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testExecutionListenerByDelegateExpression(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->executionListenerDelegateExpression("start", "aDelegateExpression")
@@ -2172,7 +2172,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMultiInstanceLoopCharacteristicsSequential(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->userTask("task")
           ->multiInstance()
@@ -2200,7 +2200,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMultiInstanceLoopCharacteristicsParallel(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
             ->multiInstance()
@@ -2220,7 +2220,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskWithInputOutput(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
             ->inputParameter("foo", "bar")
@@ -2265,7 +2265,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMultiInstanceLoopCharacteristicsAsynchronousMultiInstanceAsyncBeforeElement(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
                 ->startEvent()
                 ->userTask("task")
                 ->multiInstance()
@@ -2288,7 +2288,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testMultiInstanceLoopCharacteristicsAsynchronousMultiInstanceAsyncAfterElement(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent()
         ->userTask("task")
         ->multiInstance()
@@ -2311,7 +2311,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskWithInputOutputWithExistingExtensionElements(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
             ->executionListenerExpression("end", '${true}')
@@ -2328,7 +2328,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTaskWithInputOutputWithExistingInputOutput(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
             ->inputParameter("foo", "bar")
@@ -2347,7 +2347,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSubProcessWithInputOutputWithExistingExtensionElements(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->subProcess("subProcess")
             ->executionListenerExpression("end", '${true}')
@@ -2368,7 +2368,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testSubProcessWithInputOutputWithExistingInputOutput(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->subProcess("subProcess")
             ->inputParameter("foo", "bar")
@@ -2391,7 +2391,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimerStartEventWithDate(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent("start")->timerWithDate(self::TIMER_DATE)
         ->done();
 
@@ -2400,7 +2400,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimerStartEventWithDuration(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent("start")->timerWithDuration(self::TIMER_DURATION)
         ->done();
 
@@ -2409,7 +2409,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimerStartEventWithCycle(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
         ->startEvent("start")->timerWithCycle(self::TIMER_CYCLE)
         ->done();
 
@@ -2418,7 +2418,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateTimerCatchEventWithDate(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent("catch")->timerWithDate(self::TIMER_DATE)
           ->done();
@@ -2428,7 +2428,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateTimerCatchEventWithDuration(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent("catch")->timerWithDuration(self::TIMER_DURATION)
           ->done();
@@ -2438,7 +2438,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateTimerCatchEventWithCycle(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent("catch")->timerWithCycle(self::TIMER_CYCLE)
           ->done();
@@ -2481,7 +2481,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimerBoundaryEventWithDate(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -2494,7 +2494,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimerBoundaryEventWithDuration(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -2507,7 +2507,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testTimerBoundaryEventWithCycle(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -2520,7 +2520,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testNotCancelingBoundaryEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask()
           ->boundaryEvent("boundary")->cancelActivity(false)
@@ -2532,7 +2532,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCatchAllErrorBoundaryEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -2550,7 +2550,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensationTask(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->boundaryEvent("boundary")
@@ -2581,7 +2581,7 @@ class ProcessBuilderTest extends TestCase
     public function testOnlyOneCompensateBoundaryEventAllowed(): void
     {
         // given
-        $builder = Bpmn::getInstance()->createProcess()
+        $builder = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->boundaryEvent("boundary")
@@ -2599,7 +2599,7 @@ class ProcessBuilderTest extends TestCase
     public function testInvalidCompensationStartCall(): void
     {
         // given
-        $builder = Bpmn::getInstance()->createProcess()->startEvent();
+        $builder = Bpmn::createProcess()->startEvent();
 
         // then
         $this->expectException(BpmnModelException::class);
@@ -2611,7 +2611,7 @@ class ProcessBuilderTest extends TestCase
     public function testInvalidCompensationDoneCall(): void
     {
         // given
-        $builder = Bpmn::getInstance()->createProcess()
+        $builder = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->boundaryEvent("boundary")
@@ -2626,7 +2626,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorBoundaryEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -2656,7 +2656,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorBoundaryEventWithoutErrorMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
             ->userTask("task")
             ->endEvent()
@@ -2670,7 +2670,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorDefinitionForBoundaryEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -2690,7 +2690,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorDefinitionForBoundaryEventWithoutEventDefinitionId(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -2706,7 +2706,7 @@ class ProcessBuilderTest extends TestCase
 
         $path = tempnam(sys_get_temp_dir(), 'bpmn');
         $fd = fopen($path, 'a+');
-        Bpmn::getInstance()->writeModelToStream($fd, $this->modelInstance);
+        Bpmn::writeModelToStream($fd, $this->modelInstance);
 
         $this->assertErrorEventDefinition("boundary", "errorCode", "errorMessage");
         $this->assertErrorEventDefinitionForErrorVariables("boundary", "errorCodeVariable", "errorMessageVariable");
@@ -2716,7 +2716,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorEndEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent("end")->error("myErrorCode", "errorMessage")
           ->done();
@@ -2726,7 +2726,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorEndEventWithoutErrorMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
             ->startEvent()
             ->endEvent("end")->error("myErrorCode")
             ->done();
@@ -2736,7 +2736,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorEndEventWithExistingError(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent("end")->error("myErrorCode", "errorMessage")
@@ -2763,7 +2763,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent()
           ->subProcess()
@@ -2779,7 +2779,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testErrorStartEventWithoutErrorMessage(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent()
           ->subProcess()
@@ -2795,7 +2795,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCatchAllErrorStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent()
           ->subProcess()
@@ -2815,7 +2815,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCatchAllEscalationBoundaryEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent()
@@ -2833,7 +2833,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testEscalationBoundaryEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->subProcess("subProcess")
           ->endEvent()
@@ -2876,7 +2876,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testEscalationEndEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent("end")->escalation("myEscalationCode")
           ->done();
@@ -2886,7 +2886,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testEscalationStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent()
           ->subProcess()
@@ -2902,7 +2902,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCatchAllEscalationStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent()
           ->subProcess()
@@ -2922,7 +2922,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateEscalationThrowEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateThrowEvent("throw")->escalation("myEscalationCode")
           ->endEvent()
@@ -2933,7 +2933,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testEscalationEndEventWithExistingEscalation(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("task")
           ->endEvent("end")->escalation("myEscalationCode")
@@ -2960,7 +2960,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensationStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent()
           ->subProcess()
@@ -2981,7 +2981,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testInterruptingStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent()
           ->subProcess()
@@ -3000,7 +3000,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testNonInterruptingStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->endEvent()
           ->subProcess()
@@ -3019,7 +3019,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testUserTaskFormField(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask(BpmnTestConstants::TASK_ID)
             ->formField()
@@ -3067,7 +3067,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testUserTaskFormFieldWithExistingFormData(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask(BpmnTestConstants::TASK_ID)
             ->formField()
@@ -3094,7 +3094,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testStartEventFormField(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent(BpmnTestConstants::START_EVENT_ID)
             ->formField()
               ->id("myFormField_1")
@@ -3117,7 +3117,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensateEventDefintionCatchStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent("start")
             ->compensateEventDefinition()
             ->waitForCompletion(false)
@@ -3134,7 +3134,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensateEventDefintionCatchBoundaryEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("userTask")
           ->boundaryEvent("catch")
@@ -3152,7 +3152,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensateEventDefintionCatchBoundaryEventWithId(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("userTask")
           ->boundaryEvent("catch")
@@ -3168,7 +3168,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensateEventDefintionThrowEndEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("userTask")
           ->endEvent("end")
@@ -3186,7 +3186,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensateEventDefintionThrowIntermediateEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("userTask")
           ->intermediateThrowEvent("throw")
@@ -3205,7 +3205,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensateEventDefintionThrowIntermediateEventWithId(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("userTask")
           ->intermediateCatchEvent("throw")
@@ -3222,7 +3222,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensateEventDefintionReferencesNonExistingActivity(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("userTask")
           ->endEvent("end")
@@ -3241,7 +3241,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testCompensateEventDefintionReferencesActivityInDifferentScope(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask("userTask")
           ->subProcess()
@@ -3266,7 +3266,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testConditionalEventDefinitionExtensions(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent()
           ->conditionalEventDefinition(BpmnTestConstants::CONDITION_ID)
@@ -3291,7 +3291,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateConditionalEventDefinition(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->intermediateCatchEvent(BpmnTestConstants::CATCH_ID)
             ->conditionalEventDefinition(BpmnTestConstants::CONDITION_ID)
@@ -3310,7 +3310,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testIntermediateConditionalEventDefinitionShortCut(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
             ->intermediateCatchEvent(BpmnTestConstants::CATCH_ID)
             ->condition(null, BpmnTestConstants::TEST_CONDITION)
@@ -3326,7 +3326,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testBoundaryConditionalEventDefinition(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask(BpmnTestConstants::USER_TASK_ID)
           ->endEvent()
@@ -3348,7 +3348,7 @@ class ProcessBuilderTest extends TestCase
 
     public function testEventSubProcessConditionalStartEvent(): void
     {
-        $this->modelInstance = Bpmn::getInstance()->createProcess()
+        $this->modelInstance = Bpmn::createProcess()
           ->startEvent()
           ->userTask()
           ->endEvent()

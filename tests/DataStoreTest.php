@@ -12,7 +12,7 @@ class DataStoreTest extends TestCase
     protected function setUp(): void
     {
         $stream = fopen('tests/Resources/DataStoreTest.bpmn', 'r+');
-        $this->modelInstance = Bpmn::getInstance()->readModelFromStream($stream);
+        $this->modelInstance = Bpmn::readModelFromStream($stream);
     }
 
     public function testGetDataStore(): void

@@ -19,7 +19,7 @@ class ConditionalSequenceFlowTest extends TestCase
     protected function setUp(): void
     {
         $stream = fopen('tests/Resources/ConditionalSequenceFlowTest.xml', 'r+');
-        $this->modelInstance = Bpmn::getInstance()->readModelFromStream($stream);
+        $this->modelInstance = Bpmn::readModelFromStream($stream);
         $this->flow1 = $this->modelInstance->getModelElementById('flow1');
         $this->flow2 = $this->modelInstance->getModelElementById('flow2');
         $this->flow3 = $this->modelInstance->getModelElementById('flow3');
@@ -30,7 +30,7 @@ class ConditionalSequenceFlowTest extends TestCase
 
     protected function tearDown(): void
     {
-        Bpmn::getInstance()->validateModel($this->modelInstance);
+        Bpmn::validateModel($this->modelInstance);
     }
 
     public function testShouldHaveTypeTFormalExpression(): void
