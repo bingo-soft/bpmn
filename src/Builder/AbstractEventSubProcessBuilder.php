@@ -20,7 +20,7 @@ abstract class AbstractEventSubProcessBuilder extends AbstractFlowElementBuilder
 
     public function startEvent(?string $id = null): StartEventBuilder
     {
-        $start = $this->createChild(StartEventInterface::class, $id);
+        $start = $this->createChild(null, StartEventInterface::class, $id);
 
         $startShape = $this->createBpmnShape($start);
         $subProcessShape = $this->findBpmnShape($this->getElement());
@@ -36,5 +36,7 @@ abstract class AbstractEventSubProcessBuilder extends AbstractFlowElementBuilder
             $startBounds->setX($subProcessX + self::SPACE);
             $startBounds->setY($subProcessY + $subProcessHeight / 2 - $startHeight / 2);
         }
+
+        return $start->builder();
     }
 }
