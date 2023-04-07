@@ -58,7 +58,7 @@ class BoundsImpl extends BpmnModelElementInstanceImpl implements BoundsInterface
         $typeBuilder->build();
     }
 
-    public function getX(): float
+    public function getX(): ?float
     {
         return self::$xAttribute->getValue($this);
     }
@@ -68,7 +68,7 @@ class BoundsImpl extends BpmnModelElementInstanceImpl implements BoundsInterface
         self::$xAttribute->setValue($this, $x);
     }
 
-    public function getY(): float
+    public function getY(): ?float
     {
         return self::$yAttribute->getValue($this);
     }
@@ -78,7 +78,7 @@ class BoundsImpl extends BpmnModelElementInstanceImpl implements BoundsInterface
         self::$yAttribute->setValue($this, $y);
     }
 
-    public function getWidth(): float
+    public function getWidth(): ?float
     {
         return self::$widthAttribute->getValue($this);
     }
@@ -88,7 +88,7 @@ class BoundsImpl extends BpmnModelElementInstanceImpl implements BoundsInterface
         self::$widthAttribute->setValue($this, $width);
     }
 
-    public function getHeight(): float
+    public function getHeight(): ?float
     {
         return self::$heightAttribute->getValue($this);
     }

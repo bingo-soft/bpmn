@@ -3,13 +3,13 @@
 namespace Bpmn\Builder;
 
 use Bpmn\BpmnModelInstanceInterface;
-use Bpmn\Instance\EventSubProcessInterface;
+use Bpmn\Instance\SubProcessInterface;
 
 class EventSubProcessBuilder extends AbstractEventSubProcessBuilder
 {
     public function __construct(
         BpmnModelInstanceInterface $modelInstance,
-        EventSubProcessInterface $element
+        SubProcessInterface $element
     ) {
         parent::__construct($modelInstance, $element, EventSubProcessBuilder::class);
     }
