@@ -4,7 +4,7 @@ namespace Bpmn\Builder;
 
 use Bpmn\BpmnModelInstanceInterface;
 use Bpmn\Instance\{
-    EventSubProcessInterface,
+    SubProcessInterface,
     StartEventInterface
 };
 
@@ -12,7 +12,7 @@ abstract class AbstractEventSubProcessBuilder extends AbstractFlowElementBuilder
 {
     protected function __construct(
         BpmnModelInstanceInterface $modelInstance,
-        EventSubProcessInterface $element,
+        SubProcessInterface $element,
         string $selfType
     ) {
         parent::__construct($modelInstance, $element, $selfType);
