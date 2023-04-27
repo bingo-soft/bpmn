@@ -10,6 +10,7 @@ use Bpmn\Instance\{
     ActivityInterface,
     DataInputAssociationInterface,
     DataOutputAssociationInterface,
+    ExtensionElementsInterface,
     FlowNodeInterface,
     IoSpecificationInterface,
     LoopCharacteristicsInterface,
@@ -30,6 +31,7 @@ abstract class ActivityImpl extends FlowNodeImpl implements ActivityInterface
     protected static $dataOutputAssociationCollection;
     protected static $resourceRoleCollection;
     protected static $loopCharacteristicsChild;
+    protected static $extensionElementsChild;
 
     public function __construct(ModelTypeInstanceContext $instanceContext)
     {
@@ -88,6 +90,9 @@ abstract class ActivityImpl extends FlowNodeImpl implements ActivityInterface
 
         self::$loopCharacteristicsChild = $sequenceBuilder->element(LoopCharacteristicsInterface::class)
         ->build();
+
+        self::$extensionElementsChild = $sequenceBuilder->element(ExtensionElementsInterface::class)
+                                        ->build();
 
         $typeBuilder->build();
     }
@@ -175,5 +180,15 @@ abstract class ActivityImpl extends FlowNodeImpl implements ActivityInterface
     public function setLoopCharacteristics(LoopCharacteristicsInterface $loopCharacteristics): void
     {
         self::$loopCharacteristicsChild->setChild($this, $loopCharacteristics);
+    }
+
+    public function getExtensionElements(): ExtensionElementsInterface
+    {
+        return self::$extensionElementsChild->getChild($this);
+    }
+
+    public function setExtensionElements(ExtensionElementsInterface $extensionElements): void
+    {
+        self::$extensionElementsChild->setChild($this, $extensionElements);
     }
 }

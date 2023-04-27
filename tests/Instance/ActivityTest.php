@@ -9,6 +9,7 @@ use Xml\Test\{
 use Bpmn\Instance\{
     DataInputAssociationInterface,
     DataOutputAssociationInterface,
+    ExtensionElementsInterface,
     FlowNodeInterface,
     IoSpecificationInterface,
     PropertyInterface,
@@ -31,7 +32,8 @@ class ActivityTest extends BpmnModelElementInstanceTest
             new BpmnChildElementAssumption($this->model, DataInputAssociationInterface::class),
             new BpmnChildElementAssumption($this->model, DataOutputAssociationInterface::class),
             new BpmnChildElementAssumption($this->model, ResourceRoleInterface::class),
-            new BpmnChildElementAssumption($this->model, LoopCharacteristicsInterface::class, 0, 1)
+            new BpmnChildElementAssumption($this->model, LoopCharacteristicsInterface::class, 0, 1),
+            new BpmnChildElementAssumption($this->model, ExtensionElementsInterface::class, 0, 1)
         ];
     }
 
