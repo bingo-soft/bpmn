@@ -20,7 +20,7 @@ class BpmnModelConstants
     public const DI_NS = "http://www.omg.org/spec/DD/20100524/DI";
 
     /** The location of the BPMN 2.0 XML schema. */
-    public const BPMN_20_SCHEMA_LOCATION = "src/Resources/BPMN20.xsd";
+    public const BPMN_20_SCHEMA_LOCATION = "Resources/BPMN20.xsd";
 
     /** Xml Schema is the default type language */
     public const XML_SCHEMA_NS = "http://www.w3.org/2001/XMLSchema";
