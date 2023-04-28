@@ -38,7 +38,7 @@ interface ActivityInterface extends FlowNodeInterface, InteractionNodeInterface
 
     public function setLoopCharacteristics(LoopCharacteristicsInterface $loopCharacteristics): void;
 
-    public function getExtensionElements(): ExtensionElementsInterface;
+    public function getExtensionElements(): ?ExtensionElementsInterface;
 
     public function setExtensionElements(ExtensionElementsInterface $extensionElements): void;
 }

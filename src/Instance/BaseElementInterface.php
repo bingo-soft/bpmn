@@ -12,7 +12,7 @@ interface BaseElementInterface extends BpmnModelElementInstanceInterface
 
     public function getDocumentations(): array;
 
-    public function getExtensionElements(): ExtensionElementsInterface;
+    public function getExtensionElements(): ?ExtensionElementsInterface;
 
     public function setExtensionElements(ExtensionElementsInterface $extensionElements): void;
 

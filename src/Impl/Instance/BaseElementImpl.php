@@ -62,7 +62,7 @@ abstract class BaseElementImpl extends BpmnModelElementInstanceImpl implements B
         return self::$documentationCollection->get($this);
     }
 
-    public function getExtensionElements(): ExtensionElementsInterface
+    public function getExtensionElements(): ?ExtensionElementsInterface
     {
         return self::$extensionElementsChild->getChild($this);
     }

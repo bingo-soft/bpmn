@@ -182,7 +182,7 @@ abstract class ActivityImpl extends FlowNodeImpl implements ActivityInterface
         self::$loopCharacteristicsChild->setChild($this, $loopCharacteristics);
     }
 
-    public function getExtensionElements(): ExtensionElementsInterface
+    public function getExtensionElements(): ?ExtensionElementsInterface
     {
         return self::$extensionElementsChild->getChild($this);
     }
