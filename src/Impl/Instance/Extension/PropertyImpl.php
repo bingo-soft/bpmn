@@ -68,7 +68,7 @@ class PropertyImpl extends BpmnModelElementInstanceImpl implements PropertyInter
         self::$nameAttribute->setValue($this, $name);
     }
 
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return self::$valueAttribute->getValue($this);
     }
